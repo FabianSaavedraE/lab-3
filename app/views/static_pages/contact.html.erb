@@ -1,0 +1,41 @@
+<h1 style="text-align: center; padding: 30px"> Contact page </h1>
+<form>
+  <div class="mb-3">
+    <label for="InputName" class="form-label">Name</label>
+    <input type="text" class="form-control" id="InputName">
+  </div>
+  <div class="mb-3">
+    <label for="InputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="InputMessage" class="form-label">Message</label>
+    <textarea class="form-control" id="InputMessage" rows="3"></textarea>
+  </div>
+  <div id="liveAlertPlaceholder"></div>
+  <button type="button" class="btn btn-primary" id="S_button">Submit</button>
+</form>
+
+
+
+<script>
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+const appendAlert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
+}
+
+const alertTrigger = document.getElementById('S_button')
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', () => {
+    appendAlert('Thank you for your message, we will contact you soon.', 'success')
+  })
+}
+</script>
